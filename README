@@ -1,0 +1,5 @@
+This is designed to be a WISEngineering and WISE steptype that allows communication with the Arduino.
+
+For a simpler implementation of the same thing (not connected to WISE*) see:
+https://github.com/petermalcolm/ArduinoJaws
+
