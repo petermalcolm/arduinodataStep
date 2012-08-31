@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			var arduinodata;
+		
+			function loadContentAfterScriptsLoad(node) {
+	        	arduinodata = new Arduinodata(node);
+	        	arduinodata.render();
+	        };
+			
+	        function loadContent(node) {
+		        /*
+		         * this loadScripts() function call will load the javascript imports
+		         * into this html file 
+		         */
+	        	scriptloader.loadScripts('arduinodata', document, node.id, eventManager);
+	        };
+
+	        /*
+	         * This is called when the student clicks on the save button below in the body
+	         */
+	        function save() {
+		        /*
+		         * calls the save function in arduinodata.js
+		         */
+				arduinodata.save();
+	        }
+		</script>
+	</head>
+
+	<body>
+		<!-- TODO create the html UI that the student will see when they visit the step -->
+		
+		<!-- the promptDiv, responseDiv, saveButtonDiv are not required, they are only provided as an example,
+			 you may delete all of these divs and create the body however you like -->
+		<div id='introDiv'>
+                    Now it's time to gather some data! <br />
+                    Follow these instructions to gather data from your Arduino device:
+                    <ol>
+                        <li>Make sure the Arduino is plugged into one of the <a href="http://en.wikipedia.org/wiki/File:USB_Front_Port.jpg" target="_blank">USB ports</a> on your computer</li>
+                        <li>Click the Arduino (TM) Data Gatherer button below</li>
+                        <li>When a window pops up, choose (&bull;) Open with [Java(TM) Web Start Launcher (default)] and click <b>OK</b>.</li>
+                        &nbsp; &nbsp; &nbsp; Java will start. <br />
+                        &nbsp; &nbsp; &nbsp; A window will open that says <b>Do you want to run this application?</b>. <br />
+                        <li>Click the box next to &quot;I accept the risk and want to run this application&quot;.</li>
+                        <li>Click <b>Run</b>.</li>
+                        &nbsp; &nbsp; &nbsp; Now you can gather data from the Arduino. <br />
+                    </ol>
+                </div>
+                <div id='promptDiv'>
+                    <!-- this Div gets filled programmatically with JSON -->
+                </div>
+                <div id='arduinoDiv'>
+                    <a href="arduscoplet.jnlp"><img src="arduinodata_imgs/Arduino_data_gatherer_logo_v1.png"></img></a>
+                </div>
+                <!-- responseDiv and saveButtonDiv both hidden (unused for Arduino Data step) -->
+		<div style='display: none;' id='responseDiv'><textarea id='studentResponseTextArea' rows='8' cols='80'></textarea></div>
+		<div style='display: none;' id='saveButtonDiv'><input type='button' value='Save' onclick='save()' /></div>
+	</body>
+</html>
